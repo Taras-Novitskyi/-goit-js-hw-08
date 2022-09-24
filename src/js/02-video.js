@@ -5,14 +5,14 @@ const iframe = document.querySelector('iframe');
 const player = new Player(iframe);
 const LOCALSTORAGE_KEY = 'videoplayer-current-time';
 
-saveTimeOnLocalStorage();
+continueFromSaveTime();
 
 const onPlay = function (data) {
   localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(data.seconds));
 };
 player.on('timeupdate', throttle(onPlay, 1000));
 
-function saveTimeOnLocalStorage() {
+function continueFromSaveTime() {
   const savedTime = localStorage.getItem(LOCALSTORAGE_KEY);
 
   if (savedTime) {
