@@ -7,12 +7,10 @@ const textarea = input.querySelector('[name="message"]');
 const LOCALSTORAGE_KEY = 'feedback-form-state';
 const formData = {};
 
-console.log(formData);
-
 populateForm();
 
 input.addEventListener('submit', onFormSubmit);
-input.addEventListener('input', throttle(onInput, 1000));
+input.addEventListener('input', throttle(onInput, 500));
 
 function onInput(e) {
 	formData[e.target.name] = e.target.value;
@@ -23,7 +21,7 @@ function onInput(e) {
 function onFormSubmit(e) {
 	e.preventDefault();
 	e.currentTarget.reset();
-	
+
 	localStorage.removeItem(LOCALSTORAGE_KEY);
 }
 
@@ -35,11 +33,13 @@ function populateForm() {
 
 		if (parsedInfo.email) {
 			email.value = parsedInfo.email;
-			formData.email = parsedInfo.email;
 		} 
 		if (parsedInfo.message) {
 			textarea.value = parsedInfo.message;
-			formData.message = parsedInfo.message;
-		} 
+		}
+		
+		for (const property in parsedInfo) {
+			formData[property] = parsedInfo[property];
+   		}
 	}
 }
