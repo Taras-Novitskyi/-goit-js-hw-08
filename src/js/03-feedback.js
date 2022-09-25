@@ -5,7 +5,7 @@ const email = input.querySelector('[name="email"]');
 const textarea = input.querySelector('[name="message"]');
 
 const LOCALSTORAGE_KEY = 'feedback-form-state';
-const formData = {};
+let formData = {};
 
 populateForm();
 
