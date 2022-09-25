@@ -13,35 +13,37 @@ input.addEventListener('submit', onFormSubmit);
 input.addEventListener('input', throttle(onInput, 500));
 
 function onInput(e) {
-	formData[e.target.name] = e.target.value;
+  formData[e.target.name] = e.target.value;
 
-	localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(formData));
-};
+  localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(formData));
+}
 
 function onFormSubmit(e) {
-	e.preventDefault();
-	e.currentTarget.reset();
+  e.preventDefault();
+  e.currentTarget.reset();
 
-	localStorage.removeItem(LOCALSTORAGE_KEY);
+  localStorage.removeItem(LOCALSTORAGE_KEY);
 
-	console.log(formData);
+  console.log(formData);
+
+  formData = {};
 }
 
 function populateForm() {
-	const savedInfo = localStorage.getItem(LOCALSTORAGE_KEY)
+  const savedInfo = localStorage.getItem(LOCALSTORAGE_KEY);
 
-	if (savedInfo) {
-		const parsedInfo = JSON.parse(savedInfo);
+  if (savedInfo) {
+    const parsedInfo = JSON.parse(savedInfo);
 
-		if (parsedInfo.email) {
-			email.value = parsedInfo.email;
-		} 
-		if (parsedInfo.message) {
-			textarea.value = parsedInfo.message;
-		}
-		
-		for (const property in parsedInfo) {
-			formData[property] = parsedInfo[property];
-   		}
-	}
+    if (parsedInfo.email) {
+      email.value = parsedInfo.email;
+    }
+    if (parsedInfo.message) {
+      textarea.value = parsedInfo.message;
+    }
+
+    for (const property in parsedInfo) {
+      formData[property] = parsedInfo[property];
+    }
+  }
 }
