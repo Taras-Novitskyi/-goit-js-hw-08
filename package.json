@@ -1,5 +1,5 @@
 {
-  "name": "parcel-project-template",
+  "name": "goit-js-hw-08",
   "version": "2.0.0",
   "description": "",
   "homepage": "https://Taras-Novitskyi.github.io/goit-js-hw-08",
@@ -12,7 +12,7 @@
     "url": "git+https://github.com/Taras-Novitskyi/goit-js-hw-08.git"
   },
   "keywords": [],
-  "author": "Alexander Repeta <alexander.repeta@gmail.com>",
+  "author": "Taras Novitskyi",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Taras-Novitskyi/goit-js-hw-08/issues"
