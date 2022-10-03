@@ -19,13 +19,13 @@ function onInput(e) {
 }
 
 function onFormSubmit(e) {
+  if (!email.value || !textarea.value) {
+    alert('Please fill in all input fields');
+    return;
+  }
   e.preventDefault();
   e.currentTarget.reset();
-
   localStorage.removeItem(LOCALSTORAGE_KEY);
-
-  console.log(formData);
-
   formData = {};
 }
 
